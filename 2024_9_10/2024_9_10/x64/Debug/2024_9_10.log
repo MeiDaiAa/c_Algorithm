@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\meida\Desktop\c_Algorithm\2024_9_10\Solution.cpp(17,22): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“main.cpp”)
+  
+  2024_9_10.vcxproj -> C:\Users\meida\Desktop\c_Algorithm\2024_9_10\x64\Debug\2024_9_10.exe
