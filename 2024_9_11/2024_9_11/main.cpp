@@ -1,4 +1,3 @@
-#include <iostream>
 #include "addTwoNumbers.cpp"
 
 using namespace std;
@@ -69,8 +68,5 @@ int main(void)
 		cout << test->val << " ";
 		test = test->next;
 	}
-		
-
-
 	return EXIT_SUCCESS;
 }
