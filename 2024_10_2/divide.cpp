@@ -60,3 +60,44 @@ public:
         }
     }
 };
+
+////////////////更新的新的代码//////////////
+//解决了不能使用long类型的变量的问题//
+
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        //特殊情况处理
+        if(dividend == INT_MIN){
+            if(divisor == 1) return INT_MIN;
+            if(divisor == -1) return INT_MAX;
+        }
+        if(divisor == INT_MIN) return dividend == INT_MIN ? 1 : 0;
+        if(dividend == 0) return 0;
+
+        bool flag = false;
+
+        if((dividend < 0 && divisor < 0) || (dividend > 0 && divisor > 0)) flag = true;  
+        /*
+        如果我们将被除数和除数都变为正数，那么可能会导致溢出。
+        我们可以考虑将被除数和除数都变为负数，这样就不会有溢出的问题，在编码时只需要考虑 1 种情况了。
+        */      
+        dividend = dividend < 0 ? dividend : -dividend;
+        divisor = divisor < 0 ? divisor : -divisor;
+
+        int sor = divisor, num = -1, ans = 0;
+
+        while(divisor >= dividend){
+            sor = divisor, num = -1;
+
+            while(sor >= dividend - sor){
+                sor <<= 1;
+                num <<= 1;
+            }
+            
+            dividend -= sor;
+            ans += num;
+        }
+        return flag ? -ans : ans;
+    }
+};	
