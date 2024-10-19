@@ -103,16 +103,17 @@ private:
             valid = true;
             return;
         }
-
+        
+        // pair<int, int> p = spaces[pos];
+        // int i = p.first;
+        // int j = p.second;
         auto[i, j] = spaces[pos];
 
         for(int idx = 0; idx < 9; idx++){
             if(!row[i][idx] && !col[j][idx] && !block[i/3][j/3][idx] && !valid){
                 board[i][j] = '1' + idx;
                 row[i][idx] = col[j][idx] = block[i/3][j/3][idx] = true;
-
                 dfs(board, pos + 1);
-                
                 row[i][idx] = col[j][idx] = block[i/3][j/3][idx] = false;
             }
         }
