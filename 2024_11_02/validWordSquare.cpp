@@ -64,5 +64,20 @@ public:
         return true;
     }
     //优化
-    
+    bool validWordSquare2(vector<string>& words) {
+        int len = words.size();
+
+        for(int i = 0; i < len; ++i){
+            for(int j = 0; j < words[i].size(); ++j){
+                // if(j >= len) return false;
+                // if(i >= words[j].size()) return false;
+                // if(words[i][j] != words[j][i]) return false;
+                if ((j >= len) || 
+                    (i >= words[j].size()) || 
+                    (words[i][j] != words[j][i])) return false;
+            }
+        }
+
+        return true;
+    }
 };
