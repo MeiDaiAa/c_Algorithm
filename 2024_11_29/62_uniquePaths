@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <functional>
+
+using namespace std;
+
+// class Solution {
+// private:
+// public:
+//     int uniquePaths(int m, int n) {
+//         vector<vector<int>> dp(m, vector<int>(n, 0));
+//         function<int(int, int)> dfs = [&](int x, int y) -> int{
+//             if(x >= m || y >= n) return 0;
+//             if(x == m - 1 && y == n - 1) return 1;
+//             if(dp[x][y]) return dp[x][y];
+
+//             dp[x][y] = dfs(x + 1, y) + dfs(x, y + 1);
+//             return dp[x][y];
+//         };
+//         return dfs(0, 0);
+//     }
+// };
+
+
+// class Solution {
+// private:
+// public:
+//     int uniquePaths(int m, int n) {
+//         vector<vector<int>>f(m + 1, vector<int>(n + 1, 0));
+//         f[1][1] = 1;
+
+//         for(int i = 0; i < m; ++i) for(int j = 0; j < n; ++j){
+//            f[i + 1][j + 1] = f[i][j + 1] + f[i + 1][j]; 
+//         }
+//         return f[m][n];
+//     }
+// };
+
+class Solution {
+private:
+public:
+    int uniquePaths(int m, int n) {
+        vector<int>f(n, 1);
+
+        for(int i = 1; i < m; i++) for(int j = 1; j < n; j++){
+            f[j] += f[j - 1];
+        }
+
+        return f[n - 1];
+    }
+};
